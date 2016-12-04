@@ -27,33 +27,41 @@ public class Transposition {
     }
 
     static String decypher(String s, int dim) {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder(s);
         int dimy = (int) Math.ceil(s.length() / (double) dim);
         char[][] matrix = new char[dim][dimy];
         int cont = 0;
         int x = 0;
         int y = 0;
         int zero = (dim*dimy) - s.length()-1;
-        System.out.println(zero);
+        int posreal = dimy - 1;
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < dimy; j++) {
-                if ( y == zero && x == (dimy-1) ) {
+                if (y == zero && x == posreal) {
                     matrix[x][zero] = 0;
                     zero++;
                     continue;
                 }
-                // System.out.println(Arrays.deepToString(matrix));
                 if (cont == s.length()) {
                     matrix[y][x] = 0;
                     continue;
                 }
-                matrix[y][x] = s.charAt(cont);
-                cont++;
-                y++;
+                matrix[x][y] = s.charAt(cont);
                 System.out.println(Arrays.deepToString(matrix));
+                cont++;
+                x++;
             }
-            y = 0;
-            x++;
+            y++;
+            x = 0;
+        }
+        int c = 0;
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                if (matrix[i][j] != 0) {
+                    sb.setCharAt(c, matrix[i][j]);
+                    c++;
+                }
+            }
         }
         return sb.toString();
     }
