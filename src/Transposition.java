@@ -30,11 +30,12 @@ public class Transposition {
         StringBuilder sb = new StringBuilder(s);
         int dimy = (int) Math.ceil(s.length() / (double) dim);
         char[][] matrix = new char[dim][dimy];
-        int cont = 0;
-        int x = 0;
-        int y = 0;
-        int zero = (dim*dimy) - s.length()-1;
-        int posreal = dimy - 1;
+        int cont, x, y, zero, posreal;
+        cont = 0;
+        x = 0;
+        y = 0;
+        zero = (dim * dimy) - s.length() - 1;
+        posreal = dimy - 1;
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < dimy; j++) {
                 if (y == zero && x == posreal) {
