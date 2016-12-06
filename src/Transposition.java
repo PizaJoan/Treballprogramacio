@@ -37,7 +37,7 @@ public class Transposition {
         zero = (dim * dimy) - s.length() - 1;
         posreal = dimy - 1;
         for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < dimy; j++) {
+            for (int j = 0; j < matrix[0].length; j++) {
                 if (y == zero && x == posreal) {
                     matrix[x][zero] = 0;
                     zero++;
