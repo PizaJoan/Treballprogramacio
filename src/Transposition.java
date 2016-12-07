@@ -2,8 +2,10 @@ import java.util.Arrays;
 
 public class Transposition {
     static String cypher(String s, int dim) {
-        StringBuilder sb = new StringBuilder();
-        int dimy = (int) Math.ceil(s.length() / (double) dim);
+        int dimy = s.length() / dim;
+        if (s.length() % dim != 0) {
+            dimy += 1;
+        }
         char[][] matrix = new char[dimy][dim];
         int cont = 0;
         for (int i = 0; i < matrix.length; i++) {
@@ -15,10 +17,13 @@ public class Transposition {
                 cont++;
             }
         }
+        StringBuilder sb = new StringBuilder(s);
+        int c = 0;
         for (int i = 0; i < matrix[0].length; i++) {
-            for (char[] correcte : matrix) {
-                if (correcte[i] != 0) {
-                    sb.append(correcte[i]);
+            for (int j = 0; j < matrix.length; j++) {
+                if (matrix[j][i] != 0) {
+                    sb.setCharAt(c, matrix[j][i]);
+                    c++;
                 }
             }
         }
