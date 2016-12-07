@@ -51,4 +51,9 @@ public class TranspositionTest {
                 Transposition.decypher("sil  s péeliotero,tqf.p lqf bosleenr  s aueabeuecér  sE  ,lesmm -taaelei er", "machado"));
     }
 
+    @Test
+    public void ordenatTest() {
+        assertArrayEquals(new int[]{2,3,1,0,4}, Transposition.ordenat("LICEU"));
+    }
+
 }
