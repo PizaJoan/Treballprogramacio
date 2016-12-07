@@ -1,4 +1,4 @@
-import java.util.Arrays;
+
 
 public class Transposition {
     static String cypher(String s, int dim) {
@@ -33,7 +33,7 @@ public class Transposition {
             dimy += 1;
         }
         char[][] matrix = new char[dimy][dim];
-        int cont, x, y, zero, posreal;
+        int cont, x, y, zero;
         cont = 0;
         x = 0;
         y = 0;
