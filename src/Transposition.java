@@ -28,32 +28,28 @@ public class Transposition {
 
     static String decypher(String s, int dim) {
         StringBuilder sb = new StringBuilder(s);
-        int dimy = (int) Math.ceil(s.length() / (double) dim);
-        char[][] matrix = new char[dim][dimy];
+        int dimy = s.length() / dim;
+        if (s.length() % dim != 0) {
+            dimy += 1;
+        }
+        char[][] matrix = new char[dimy][dim];
         int cont, x, y, zero, posreal;
         cont = 0;
         x = 0;
         y = 0;
-        zero = (dim * dimy) - s.length() - 1;
-        posreal = dimy - 1;
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                if (y == zero && x == posreal) {
-                    matrix[x][zero] = 0;
-                    zero++;
+        zero = (dim * dimy) - s.length();
+        for (int i = 0; i < matrix[0].length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                if (y == dimy - 1 && x >= dim - zero) {
                     continue;
                 }
-                if (cont == s.length()) {
-                    matrix[y][x] = 0;
-                    continue;
-                }
-                matrix[x][y] = s.charAt(cont);
-                System.out.println(Arrays.deepToString(matrix));
+                matrix[y][x] = s.charAt(cont);
                 cont++;
-                x++;
+                y++;
+
             }
-            y++;
-            x = 0;
+            x++;
+            y = 0;
         }
         int c = 0;
         for (int i = 0; i < matrix.length; i++) {

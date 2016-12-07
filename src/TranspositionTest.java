@@ -21,14 +21,14 @@ public class TranspositionTest {
         assertEquals("ABCDEFG",
                 Transposition.decypher("ACEGBDF", 2));
 
-//        assertEquals("ABCDEFG",
-//                Transposition.decypher("ADGBECF", 3));
-////
-//        assertEquals("La saviesa és filla de l'experiència.",
-//                Transposition.decypher("Lefeeaasi r. allis l'èaéaenvs xci dpi", 7));
-////
-////        assertEquals("L'èxit polític és per aquells que perceben les necessitats públiques i saben satisfer-les.",
-////                Transposition.decypher("Llplrstias'íesc aqbfètr entueexi qbesenricauec s -t qenep sl éu  súiaepseplsb tso leeilsi.", 9));
+        assertEquals("ABCDEFG",
+                Transposition.decypher("ADGBECF", 3));
+
+        assertEquals("La saviesa és filla de l'experiència.",
+                Transposition.decypher("Lefeeaasi r. allis l'èaéaenvs xci dpi", 7));
+
+        assertEquals("L'èxit polític és per aquells que perceben les necessitats públiques i saben satisfer-les.",
+                Transposition.decypher("Llplrstias'íesc aqbfètr entueexi qbesenricauec s -t qenep sl éu  súiaepseplsb tso leeilsi.", 9));
 
     }
 
