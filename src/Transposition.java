@@ -129,10 +129,10 @@ public class Transposition {
         int pos[] = ordenat(key);
         for (int i = 0; i < matrix[0].length; i++) {
             for (int j = 0; j < matrix.length; j++) {
-                if (j == dimy - 1 && i >= dim - zero) {
+                if (j == dimy-1 && i == dim - zero) {
                     continue;
                 }
-                matrix[j][pos[i]] = s.charAt(cont);
+                matrix[j][i] = s.charAt(cont);
                 System.out.println(Arrays.deepToString(matrix));
                 cont++;
             }
