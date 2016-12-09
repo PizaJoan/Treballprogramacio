@@ -67,31 +67,77 @@ public class Transposition {
         return sb.toString();
     }
 
-    static int [] ordenat(String s) {
-        int[] orden = new int[s.length()];
-        int pos, lletra;
-        pos = 0;
-        lletra = 0;
-        for (int i = 0; i < s.length(); i++) {
-            if (lletra < s.charAt(i)) {
-                lletra = s.charAt(i);
-                pos++;
-                orden[i] = pos;
+    static int[] ordenat(String s, int dimy) {
+        StringBuilder sb = new StringBuilder(s);
+        int cont;
+        cont = 0;
+        char[] orden = new char[s.length()];
+        int[] pos = new int[s.length()];
+
+        for (int i = 0; i < sb.length(); i++) {
+            orden[i] = sb.charAt(i);
+        }
+        Arrays.sort(orden);
+        for (int i = 0; i < sb.length(); i++) {
+            for (int j = 0; j < sb.length(); j++) {
+                if (orden[i] == sb.charAt(j)) {
+                    pos[i] = cont;
+                    sb.setCharAt(j, (char) 0);
+                    break;
+                }
+                cont++;
+            }
+            cont = 0;
+        }
+        int ar[] = new int[pos.length + 1];
+        for (int i = 0; i < pos.length; i++) {
+            ar[i] = pos[i];
+        }
+        if (pos.length < dimy) {
+            for (int i = 0; i < dimy; i++) {
+                if (i == dimy - 1) {
+                    ar[i] = i;
+                    break;
+                }
             }
         }
-        return orden;
+        return ar;
     }
 
 
+
     static String cypher(String s, String key) {
-        int dim, dimy;
+        int dim, dimy, cont, cont1;
+        cont = 0;
         dim = key.length();
         dimy = s.length() / dim;
         if ( s.length() % dim != 0 ) {
             dimy++;
         }
         char [][] matrix = new char[dimy][dim];
-        return null;
+        int pos[] = ordenat(key, dimy);
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                if (cont == s.length()) {
+                    continue;
+                }
+                matrix[pos[i]][j] = s.charAt(cont);
+                System.out.println(Arrays.deepToString(matrix));
+                cont++;
+            }
+        }
+        cont1 = 0;
+        StringBuilder sb = new StringBuilder(s);
+        for (int i = 0; i < matrix[0].length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                if (matrix[pos[j]][pos[i]] != 0) {
+                    sb.setCharAt(cont1, matrix[pos[j]][pos[i]]);
+                    cont1++;
+                }
+            }
+        }
+
+        return sb.toString();
     }
 
     static String decypher(String s, String key) {
