@@ -34,27 +34,21 @@ public class Transposition {
         StringBuilder sb = new StringBuilder(s);
         int dimy = s.length() / dim;
         if (s.length() % dim != 0) {
-            dimy += 1;
+            dimy ++;
         }
         char[][] matrix = new char[dimy][dim];
-        int cont, x, y, zero, c;
+        int cont, zero, c;
         cont = 0;
-        x = 0;
-        y = 0;
         zero = (dim * dimy) - s.length();
         c = 0;
         for (int i = 0; i < matrix[0].length; i++) {
             for (int j = 0; j < matrix.length; j++) {
-                if (y == dimy - 1 && x >= dim - zero) {
+                if (j == dimy - 1 && i >= dim - zero) {
                     continue;
                 }
-                matrix[y][x] = s.charAt(cont);
+                matrix[j][i] = s.charAt(cont);
                 cont++;
-                y++;
-
             }
-            x++;
-            y = 0;
         }
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
@@ -86,8 +80,6 @@ public class Transposition {
         }
         return pos;
     }
-
-
 
     static String cypher(String s, String key) {
         int dim, dimy, cont;
@@ -123,6 +115,36 @@ public class Transposition {
     }
 
     static String decypher(String s, String key) {
-        return null;
+        int dim = key.length();
+        StringBuilder sb = new StringBuilder(s);
+        int dimy = s.length() / dim;
+        if (s.length() % dim != 0) {
+            dimy ++;
+        }
+        char[][] matrix = new char[dimy][dim];
+        int cont, zero, c;
+        cont = 0;
+        zero = (dim * dimy) - s.length();
+        c = 0;
+        int pos[] = ordenat(key);
+        for (int i = 0; i < matrix[0].length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                if (j == dimy - 1 && i >= dim - zero) {
+                    continue;
+                }
+                matrix[j][pos[i]] = s.charAt(cont);
+                System.out.println(Arrays.deepToString(matrix));
+                cont++;
+            }
+        }
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                if (matrix[i][pos[j]] != 0) {
+                    sb.setCharAt(c, matrix[i][pos[j]]);
+                    c++;
+                }
+            }
+        }
+        return sb.toString();
     }
 }
