@@ -67,7 +67,7 @@ public class Transposition {
         return sb.toString();
     }
 
-    static int[] ordenat(String s, int dimy) {
+    static int[] ordenat(String s) {
         StringBuilder sb = new StringBuilder(s);
         int cont;
         cont = 0;
@@ -95,7 +95,7 @@ public class Transposition {
 
 
     static String cypher(String s, String key) {
-        int dim, dimy, cont, cont1;
+        int dim, dimy, cont;
         cont = 0;
         dim = key.length();
         dimy = s.length() / dim;
@@ -103,7 +103,7 @@ public class Transposition {
             dimy++;
         }
         char [][] matrix = new char[dimy][dim];
-        int pos[] = ordenat(key, dimy);
+        int pos[] = ordenat(key);
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
                 if (cont == s.length()) {
