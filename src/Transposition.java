@@ -122,7 +122,6 @@ public class Transposition {
                     continue;
                 }
                 matrix[pos[i]][j] = s.charAt(cont);
-                System.out.println(Arrays.deepToString(matrix));
                 cont++;
             }
         }
