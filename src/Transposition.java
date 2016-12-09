@@ -71,13 +71,12 @@ public class Transposition {
         StringBuilder sb = new StringBuilder(s);
         int cont;
         cont = 0;
-        char[] orden = new char[s.length()];
+
+        char [] orden = s.toCharArray();
+        Arrays.sort(orden);
+
         int[] pos = new int[s.length()];
 
-        for (int i = 0; i < sb.length(); i++) {
-            orden[i] = sb.charAt(i);
-        }
-        Arrays.sort(orden);
         for (int i = 0; i < sb.length(); i++) {
             for (int j = 0; j < sb.length(); j++) {
                 if (orden[i] == sb.charAt(j)) {
@@ -110,7 +109,6 @@ public class Transposition {
                     continue;
                 }
                 matrix[i][j] = s.charAt(cont);
-                System.out.println(Arrays.deepToString(matrix));
                 cont++;
             }
         }
