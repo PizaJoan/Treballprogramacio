@@ -89,19 +89,7 @@ public class Transposition {
             }
             cont = 0;
         }
-        int ar[] = new int[pos.length + 1];
-        for (int i = 0; i < pos.length; i++) {
-            ar[i] = pos[i];
-        }
-        if (pos.length < dimy) {
-            for (int i = 0; i < dimy; i++) {
-                if (i == dimy - 1) {
-                    ar[i] = i;
-                    break;
-                }
-            }
-        }
-        return ar;
+        return pos;
     }
 
 
@@ -121,17 +109,18 @@ public class Transposition {
                 if (cont == s.length()) {
                     continue;
                 }
-                matrix[pos[i]][j] = s.charAt(cont);
+                matrix[i][j] = s.charAt(cont);
+                System.out.println(Arrays.deepToString(matrix));
                 cont++;
             }
         }
-        cont1 = 0;
+        cont = 0;
         StringBuilder sb = new StringBuilder(s);
         for (int i = 0; i < matrix[0].length; i++) {
             for (int j = 0; j < matrix.length; j++) {
-                if (matrix[pos[j]][pos[i]] != 0) {
-                    sb.setCharAt(cont1, matrix[pos[j]][pos[i]]);
-                    cont1++;
+                if (matrix[j][pos[i]] != 0) {
+                    sb.setCharAt(cont, matrix[j][pos[i]]);
+                    cont++;
                 }
             }
         }
