@@ -69,8 +69,6 @@ public class Transposition {
 
     static int[] ordenat(String s) {
         StringBuilder sb = new StringBuilder(s);
-        int cont;
-        cont = 0;
 
         char [] orden = s.toCharArray();
         Arrays.sort(orden);
@@ -80,13 +78,11 @@ public class Transposition {
         for (int i = 0; i < sb.length(); i++) {
             for (int j = 0; j < sb.length(); j++) {
                 if (orden[i] == sb.charAt(j)) {
-                    pos[i] = cont;
+                    pos[i] = j;
                     sb.setCharAt(j, (char) 0);
                     break;
                 }
-                cont++;
             }
-            cont = 0;
         }
         return pos;
     }
